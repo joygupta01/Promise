@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">JSON</h1>
+    <p id="result"></p>
+    <hr>
+    <h1 style="text-align: center;">Js Async/Await</h1>
+    <p id="a"></p>
+    <hr>
+    <h1 style="text-align: center;">Promise</h1>
+    <p id="promise"></p>
+    <hr>
+    <h1 style="text-align: center;">Callback</h1>
+    <p id="cb"></p>
+    <hr>
+<script>
+        var obj = {name:"Joy",grade:"12" }
+        var myjson = JSON.stringify (obj)
+        var newobj = JSON.parse(myjson)
+        document.getElementById("result").innerHTML=newobj.name
+
+        async function divide(a,b){
+            let result = await a / b;
+            document.getElementById("a").innerHTML=result
+        }
+        divide(40,10);
+
+        function sum (a,b){
+            var sum = a + b;
+            document.getElementById("promise").innerHTML=sum;
+        }
+        let mypromise = new Promise (function(myresolve,myreject){
+        let x = 0;
+        if (x == 0) {
+            myresolve("OK");
+        }
+        else {
+            myreject("error")
+        }
+    })
+mypromise.then(
+    function (value){sum(5,8)},
+    function (error){sum(error)}
+)
+
+function displayer (value) {
+    document.getElementById("cb").innerHTML=value
+
+}
+function calculator (num1,num2) {
+    var sum= num1+num2
+    displayer(sum)
+}
+calculator(5,10)
+    </script>
+    
+</body>
+</html>
